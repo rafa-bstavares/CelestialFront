@@ -21,9 +21,15 @@ export default {
         "cinzaAzul200": "#d5dae2",
         "cinzaAzul300": "#b0b9c9",
         "cinzaAzul400": "#8694aa",
+        "azulFundoChat": "#024bae",
+        "roxoFundoChat": "#C76BE3",
+        "fundoTextoChat": "#e4eaff",
+        "azulTextoChat": "#1378ec"
       },
       padding:{
-        "paddingSecaoGeral": "80px 100px"
+        "paddingSecaoGeral": "80px 100px",
+        "paddingXSecao": "100px",
+        "paddingXChat": "0 2vw"
       },      keyframes: {
         entrarMenu: {
           '0%': {
@@ -47,7 +53,8 @@ export default {
         sairMenu: "sairMenu .3s linear", 
       },
       fontFamily: {
-        fontePrincipal: "'EB Garamond', serif"
+        fontePrincipal: "'EB Garamond', serif",
+        poppins: "'Poppins', sans-serif"
       },
       fontSize: {
         textoH1: "60pt",
@@ -55,6 +62,10 @@ export default {
         textoH3: "36pt",
         textoPadraoMaior: "24pt",
         textoPadrao: "18pt",
+        textoGrandeChat: "27px",
+        textoMedioChat: "19px",
+        textoPadraoChat: "16px",
+        textoPequenoChat: "13px"
 
       }
     },

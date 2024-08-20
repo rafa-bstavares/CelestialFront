@@ -5,6 +5,7 @@ import HomeProItem from "../HomeProItem/HomeProItem"
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react";
+import { socket } from "../../socket";
 
 
 export default function SecaoProfissionais(){
@@ -27,6 +28,15 @@ export default function SecaoProfissionais(){
 
     gsap.registerPlugin(useGSAP);
     gsap.registerPlugin(ScrollTrigger) 
+
+    socket.on("mudStatus", (data) => {
+        const cloneInfos = [...profissionais]
+        const idxPro =  cloneInfos.findIndex((item) => item.id == data.id)
+        if(idxPro >= 0 ){
+            cloneInfos[idxPro].status = data.status
+            setProfissionais(cloneInfos)
+        }
+    })
 
     const container = useRef(null);
 
@@ -67,7 +77,7 @@ export default function SecaoProfissionais(){
             </div>
             <div className="w-full min-h-screen lg:grid lg:grid-cols-3 lg:justify-items-center items-center flex flex-col lg:gap-10 gap-4">
                 {
-                    profissionais.map(item => <HomeProItem descricaoMenor={item.descricaoMenor} img={item.foto} nome={item.nome} status={item.status} valorMin={item.valorMin}/>)
+                    profissionais.map(item => <HomeProItem id={item.id} descricaoMenor={item.descricaoMenor} img={item.foto} nome={item.nome} status={item.status} valorMin={item.valorMin}/>)
                 }
             </div>
         </div>

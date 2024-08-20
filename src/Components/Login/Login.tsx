@@ -4,6 +4,7 @@ import { ContextoLogin } from "../../Contexts/ContextoLogin/ContextoLogin"
 import { redirect, useNavigate } from "react-router-dom"
 import feliz from "../../assets/images/carinhaFeliz.svg"
 import { ContextoUsuario } from "../../Contexts/ContextoUsuario/ContextoUsuario"
+import { ContextoAviso } from "../../Contexts/ContextoAviso/ContextoAviso"
 
 type Props = {
     tipoLogin: "Atendente" | "Usuario" | "Adm"
@@ -13,6 +14,7 @@ export default function Login({tipoLogin}: Props){
 
     const {setAdmLogado, setAtendenteLogado, setUsuarioLogado} = useContext(ContextoLogin)
     const {cadastrouAgora} = useContext(ContextoUsuario)
+    const {setTemAvisoLogin} = useContext(ContextoAviso)
 
     const [email, setEmail] = useState<string>("")
     const [senha, setSenha] = useState<string>("")
@@ -53,6 +55,7 @@ export default function Login({tipoLogin}: Props){
                             localStorage.setItem('authToken', data.token)
                             if(localStorage.getItem("authToken")){
                                 setUsuarioLogado(true)
+                                setTemAvisoLogin(false)
                                 navigate("/")
                             }
                     }

@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer utilities {
+
+  .triangle-right {
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .triangle-left {
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+
+}
+
 body{
   margin: 0;
   padding: 0;
+  background-color: #000;
 
 }
 
